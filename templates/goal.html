@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Goal Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 5rem;
+            background: url('/static/bg_1.jpg') no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .starter-template {
+          padding: 3rem 1.5rem;
+          text-align: right; /* Align text to the right */
+
+        }
+        .form-group {
+            margin-left: auto; /* Push form to the right */
+            width: fit-content;
+        }
+        .starter-template h1 {
+            margin-left: 36rem;
+            color: white;
+            font-size: 2rem; /* Change the color of the logo text to white */
+        }
+        .form-control {
+            width: 100%; /* Set the width of form controls to 100% */
+            margin-bottom: 10px;
+            font-size: 1rem; /* Add some margin below each form control */
+        }
+        .form-group .col-md-6 input {
+            width: 300%; /* Set the width of input elements inside col-md-6 to 100% */
+        }
+        label {
+            color: white;
+            text-align: center;
+        }
+        .alert-info strong {
+        font-size: 1rem; /* Set initial font size */
+        }
+        @media (min-width: 768px) {
+        h1 {
+            font-size: 2.5rem; /* Increase font size for medium devices and above */
+        }
+        .form-control {
+            font-size: 1.2rem; /* Increase font size for medium devices and above */
+        }
+        .alert-info strong {
+            font-size: 1.2rem; /* Increase font size for medium devices and above */
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Goal Prediction</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/goal.html">Goal Predictor</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/analysis.html">Analysis</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/about.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <div class="starter-template text-center">
+      <h1>Goal Predictor</h1>
+      <form action="/goal" method="post">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <label for="time">Time</label>
+                    <input type="number" name="time" id="time" class="form-control custom-select-lg" placeholder="Time" required min="0" max="120" aria-label="Time">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <label for="side">Side:</label>
+                    <select name="side" id="side" class="form-control custom-select-lg" required>
+                        <option value=" ">Side</option>
+                        <option value="1">Home</option>
+                        <option value="2">Away</option>
+                    </select>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <label for="bodypart">Body Part:</label>
+                    <select name="bodypart" id="bodypart" class="form-control custom-select-lg" required>
+                        <option value=" ">Body Part</option>
+                        <option value="1">Right Foot</option>
+                        <option value="2">Left Foot</option>
+                        <option value="3">Head</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <label for="location">Location:</label>
+                    <select name="location" id="location" class="form-control custom-select-lg" required>
+                        <option value=" ">Location</option>
+                        <option value="1">Attacking Half</option>
+                        <option value="2">Defensive Half</option>
+                        <option value="3">Cenetr of the box</option>
+                        <option value="4">Left wing</option>
+                        <option value="5">Right wing</option>
+                        <option value="6">Difficult angle and long range</option>
+                        <option value="7">Difficult angle on the left</option>
+                        <option value="8">Difficult angle on the right</option>
+                        <option value="9">Left side of the box</option>
+                        <option value="10">Left side of the six yard box</option>
+                        <option value="11">Right side of the box</option>
+                        <option value="12">Right side of the six yard box</option>
+                        <option value="13">Very close range</option>
+                        <option value="14">Penalty spot</option>
+                        <option value="15">Outside the box</option>
+                        <option value="16">Long range</option>
+                        <option value="17">More than 35 yards</option>
+                        <option value="18">More than 40 yards</option>
+                        <option value="19">Not recorded</option>
+                    </select>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <label for="situation">Situation:</label>
+                    <select name="situation" id="situation" class="form-control custom-select-lg" required>
+                        <option value=" ">Situation</option>
+                        <option value="1">Open Play</option>
+                        <option value="2">Set Piece</option>
+                        <option value="3">Free kick</option>
+                        <option value="4">Corner</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <label for="assist_method">Assist:</label>
+                    <select name="assist_method" id="assist_method" class="form-control custom-select-lg" required>
+                        <option value=" ">Assist Method</option>
+                        <option value="0">None</option>
+                        <option value="1">Pass</option>
+                        <option value="2">Cross</option>
+                        <option value="3">Headed Pass</option>
+                        <option value="5">Through Ball</option>
+                        <!-- Add options for other assist methods -->
+                    </select>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 text-center">
+                    <label for="fast_break">Fast Break:</label>
+                    <select name="fast_break" id="fast_break" class="form-control custom-select-lg" required>
+                        <option value=" ">Fast Break</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                        <!-- Add options for other assist methods -->
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 mt-3">
+                    <button type="submit" class="btn btn-primary custom-select-lg">Submit</button>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </form>
+    
+    </div>
+    {% if data %}
+      <div class="alert alert-info mt-3" role="alert">
+        {% if data == "GOAL!" %}
+        <img src="/static/200w.gif" alt="Goal GIF" style="width: 100px; height: 100px;">
+        {% elif data == "NO GOAL" %}
+        <img src="/static/201w.gif" alt="No Goal GIF" style="width: 100px; height: 100px;">
+        {% endif %}
+        Goal Prediction Result: <strong>{{data}}</strong>
+      </div>
+      {% endif %}
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</script>
+</body>
+
+</html>
